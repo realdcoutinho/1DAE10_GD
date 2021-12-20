@@ -7,8 +7,6 @@
 #include <cstring>
 #include <string>
 
-void Strings();
-
 int main()
 {
     std::string hello{ "Hello my name is Diogo." };
@@ -21,9 +19,27 @@ int main()
 
     std::cout << "First character of the string using 'at' is : " << hello.at(0) << '\n';
     std::cout << "Last character of the string using 'at' is  : " << hello.at(hello.size() - 1) << '\n';
-    std::string str{ "o" };
+
     //std::size_t found = hello.find(str);
 
+    for (unsigned int i{}; i < hello.size(); ++i) {
+        std::cout << hello[i] << "_";
+    }
+    std::cout << '\n';
+    std::cout << '\n';
+
+
+   /* char* cstr = new char[hello.length() + 1];
+    std::strcpy(cstr, hello.c_str());
+    char* p = std::strtok(cstr, " ");
+    while (p != 0)
+    {
+        std::cout << p << "_";
+        p = std::strtok(NULL, " ");
+    }
+    delete[] cstr;*/
+
+    std::string str{ "o" };
     size_t position{ 0 };
     std::cout << "Occurances of '" << str << "' at: " << std::endl;
     do
@@ -54,63 +70,67 @@ int main()
 
     std::string choice{};
     std::string ast{ "*" };
+    std::cout << "What do you wanna replace? ";
     std::cin >> choice;
 
+    std::cout << '\n';
 
-    position = 0 ;
-    std::cout << "Occurances of '" << choice << "' at: " << std::endl;
+    position = 0;
+        do
+        {
+            position = hello.find(choice, position);
+            if (position != std::string::npos)
+            {
+
+                hello.replace(position, choice.size(), ast);
+                position++;
+
+            }
+        } while (position != std::string::npos);
+    std::cout << hello << '\n';
+
+    std::cout << '\n';
+    std::string choiceTwo{};
+    std::cout << "What do you wanna erase? ";
+    std::cin >> choiceTwo;
+
+    
+
+    position = 0;
     do
     {
-        position = hello.find(choice, position);
+        position = hello.find(choiceTwo, position);
         if (position != std::string::npos)
         {
-            str.replace(position, hello.size(), ast);
-            if (position < hello.size()) {
-                position++;
-            }
+
+            hello.erase(position, choiceTwo.size());
+            position++;
 
         }
     } while (position != std::string::npos);
     std::cout << hello << '\n';
-    std::cout << std::endl << std::endl;
 
 
 
-    
-    // {
-
-    //}
-
-    //if (found != std::string::npos)
-    //    std::cout << "first 'needle' found at: " << found << '\n';
 
 
 
-    /*
-        std::cout << '\n';
 
-    for (unsigned int i{}; i < hello.size(); ++i) {
-        std::cout << hello[i] << "_";
-    }
-    std::cout << '\n';
-    std::cout << '\n';
 
-    
-    char* cstr = new char[hello.length() + 1];
-    std::strcpy(cstr, hello.c_str());
-    char* p = std::strtok(cstr, " ");
-    while (p != 0)
-    {
-        std::cout << p << "_";
-        p = std::strtok(NULL, " ");
-    }
-    delete[] cstr;
-    */
-    std::cout << '\n';
+    //do
+    //{
+    //    position = hello.rfind(choice, position);
+    //    if (position != std::string::npos)
+    //    {
+    //        hello.replace(position,choice.size(), ast);
+    //        std::cout << position << " ";
+    //        position++;
+    //    }
+    //} while (position != std::string::npos);
+    //std::cout << std::endl << std::endl;
+    //std::cout << hello << '\n';
 
-}
 
-void Strings()
-{
+
 
 }
