@@ -13,8 +13,39 @@ float g_WindowHeight{ 300 };
 
 #pragma region ownDeclarations
 // Declare your own global variables here
+float g_border{ 10.0f };
+float g_scale{ 5.0f };
+
+float g_KnightPositionHorizontal{};
+float g_KnightPositionVertical{ 0.0f };
+float g_KnightSpeed{15.0f};
+
+//float g_TiboPositionHorizontal{};
+//float g_TiboPositionVertical{};
+//float g_TiboSpeed{ 15.0f };
+
+struct Sprite
+{
+	Texture texture;
+	int frames;
+	int cols;
+	float frameTime;
+	int currentFrame;
+	float accumaltedTime;
+};
+
+
 Sprite g_KnightSprite{};
+//Sprite g_TiboSprite{};
 // Declare your own functions here
+void InitKnight();
+void UpdateKnight(float elapseSec);
+void DrawKnight();
+
+//void InitTibo();
+//void UpdateTibo(float elapseSec);
+//void DrawTibo();
+
 
 #pragma endregion ownDeclarations
 

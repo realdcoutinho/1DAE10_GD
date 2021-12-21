@@ -81,14 +81,6 @@ struct AngleSpeed
 	float speed;
 };
 
-struct Sprite
-{
-	Texture Texture;
-	int frames;
-	int cols;
-	float frameTime;
-	int currentFrame;
-	float accumaltedTime;
-};
+
 
 

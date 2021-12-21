@@ -1,11 +1,14 @@
 #include "pch.h"
 #include "Game.h"
+#include <iostream>
 
 //Basic game functions
 #pragma region gameFunctions											
 void Start()
 {
 	// initialize game resources here
+	InitKnight();
+	//InitTibo();
 }
 
 void Draw()
@@ -13,28 +16,23 @@ void Draw()
 	ClearBackground();
 
 	// Put your own draw statements here
-
+	DrawKnight();
+	//DrawTibo();
 }
 
 void Update(float elapsedSec)
 {
-	// process input, do physics 
 
-	// e.g. Check keyboard state
-	//const Uint8 *pStates = SDL_GetKeyboardState( nullptr );
-	//if ( pStates[SDL_SCANCODE_RIGHT] )
-	//{
-	//	std::cout << "Right arrow key is down\n";
-	//}
-	//if ( pStates[SDL_SCANCODE_LEFT] && pStates[SDL_SCANCODE_UP])
-	//{
-	//	std::cout << "Left and up arrow keys are down\n";
-	//}
+	UpdateKnight(elapsedSec);
+	//UpdateTibo(elapsedSec);
+	//g_TiboPositionHorizontal += g_TiboSpeed * elapsedSec;
 }
 
 void End()
 {
 	// free game resources here
+	DeleteTexture(g_KnightSprite.texture);
+	//DeleteTexture(g_TiboSprite.texture);
 }
 #pragma endregion gameFunctions
 
@@ -42,7 +40,21 @@ void End()
 #pragma region inputHandling											
 void OnKeyDownEvent(SDL_Keycode key)
 {
-
+		switch (key)
+	{
+	case SDLK_LEFT:
+		g_KnightPositionHorizontal -= g_KnightSpeed;
+		break;
+	case SDLK_RIGHT:
+		g_KnightPositionHorizontal += g_KnightSpeed;
+		break;
+	case SDLK_UP:
+		g_KnightPositionVertical += g_KnightSpeed;
+		break;
+	case SDLK_DOWN:
+		g_KnightPositionVertical -= g_KnightSpeed;
+		break;
+	}
 }
 
 void OnKeyUpEvent(SDL_Keycode key)
@@ -96,5 +108,104 @@ void OnMouseUpEvent(const SDL_MouseButtonEvent& e)
 
 #pragma region ownDefinitions
 // Define your own functions here
+void InitKnight()
+{
+	bool succesfull{ TextureFromFile("Resources/Sprites/RunningKnight.png", g_KnightSprite.texture) };
+	if (!succesfull) std::cout << "Loading PNG Failed";
+	else {
+		std::cout << "It was good!" << '\n';
+	}
+
+	g_KnightSprite.cols = 8;
+	g_KnightSprite.frames = 8;
+	g_KnightSprite.currentFrame = 0;
+	g_KnightSprite.accumaltedTime = 0.0f;
+	g_KnightSprite.frameTime = 1 / 10.0f;
+
+}
+
+void UpdateKnight(float elapseSec)
+{
+	g_KnightSprite.accumaltedTime += elapseSec;
+	if (g_KnightSprite.accumaltedTime > g_KnightSprite.frameTime)
+	{
+		//Determine next frame number
+		++g_KnightSprite.currentFrame %= g_KnightSprite.frames;
+		g_KnightSprite.accumaltedTime -= g_KnightSprite.frameTime;
+	}
+}
+
+void DrawKnight()
+{
+	//Part of texture that corresponds with the curretn frame number
+	Rectf srcRect{};
+	srcRect.width = g_KnightSprite.texture.width / g_KnightSprite.cols;
+	srcRect.height = g_KnightSprite.texture.height;
+	srcRect.left = g_KnightSprite.currentFrame * srcRect.width;
+	srcRect.bottom = srcRect.height;
+
+	//Draw it at the top of the window
+	const float scale{ 5.0f };
+	const float border{ 10.0f };
+	Rectf destRect{};
+	destRect.left = g_KnightPositionHorizontal;
+	destRect.bottom = g_KnightPositionVertical;
+	destRect.width = srcRect.width * scale;
+	destRect.height = srcRect.height * scale;
+
+	DrawTexture(g_KnightSprite.texture, destRect, srcRect);
+}
+
+
+//
+//void InitTibo()
+//{
+//	bool succesfull{ TextureFromFile("Resources/Sprites/Tibo.png", g_KnightSprite.texture) };
+//	if (!succesfull) std::cout << "Loading PNG Failed";
+//	else {
+//		std::cout << "It was good!" << '\n';
+//	}
+//
+//	g_TiboSprite.cols = 5;
+//	g_TiboSprite.frames = 25;
+//	g_TiboSprite.currentFrame = 0;
+//	g_TiboSprite.accumaltedTime = 0.0f;
+//	g_TiboSprite.frameTime = 1 / 15.0f;
+//
+//}
+//
+//void UpdateTibo(float elapseSec)
+//{
+//	g_TiboSprite;
+//	g_TiboSprite.accumaltedTime += elapseSec;
+//	if (g_TiboSprite.accumaltedTime > g_TiboSprite.frameTime)
+//	{
+//		//Determine next frame number
+//		++g_TiboSprite.currentFrame %= g_TiboSprite.frames;
+//		g_TiboSprite.accumaltedTime -= g_TiboSprite.frameTime;
+//	}
+//}
+//
+//void DrawTibo()
+//{
+//	//Part of texture that corresponds with the curretn frame number
+//	Rectf srcRect{};
+//	srcRect.width = g_TiboSprite.texture.width / g_TiboSprite.cols;
+//	srcRect.height = g_TiboSprite.texture.height;
+//	srcRect.left = g_TiboSprite.currentFrame * srcRect.width;
+//	srcRect.bottom = srcRect.height;
+//
+//	//Draw it at the top of the window
+//	const float scale{ 5.0f };
+//	const float border{ 10.0f };
+//	Rectf destRect{};
+//	destRect.width = srcRect.width * scale;
+//	destRect.height = g_TiboSprite.texture.height / (g_TiboSprite.frames/ g_TiboSprite.cols);
+//	destRect.left = (float)((g_TiboSprite.currentFrame % g_TiboSprite.cols) * destRect.width);
+//	destRect.bottom = (float)((g_TiboSprite.currentFrame / g_TiboSprite.cols + 1) * g_TiboSprite.texture.height);
+//
+//
+//	DrawTexture(g_TiboSprite.texture, destRect, srcRect);
+//}
 
 #pragma endregion ownDefinitions
