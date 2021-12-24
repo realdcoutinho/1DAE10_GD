@@ -1,8 +1,1 @@
-﻿  pch.cpp
-  Applications.cpp
-C:\Users\diogo\Documents\DAE- 1st Semester\Programming 01\submition\1DAE10E_01_deMouraCoutinho_Diogo\Applications\Applications.cpp(40,29): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\diogo\Documents\DAE- 1st Semester\Programming 01\submition\1DAE10E_01_deMouraCoutinho_Diogo\Applications\Applications.cpp(152,39): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\diogo\Documents\DAE- 1st Semester\Programming 01\submition\1DAE10E_01_deMouraCoutinho_Diogo\Applications\Applications.cpp(153,39): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\diogo\Documents\DAE- 1st Semester\Programming 01\submition\1DAE10E_01_deMouraCoutinho_Diogo\Applications\Applications.cpp(233,48): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\diogo\Documents\DAE- 1st Semester\Programming 01\submition\1DAE10E_01_deMouraCoutinho_Diogo\Applications\Applications.cpp(234,27): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-  Applications.vcxproj -> C:\Users\diogo\Documents\DAE- 1st Semester\Programming 01\submition\1DAE10E_01_deMouraCoutinho_Diogo\Applications\x64\Debug\Applications.exe
+﻿  Applications.vcxproj -> C:\Users\diogo\Documents\GitHub\1DAE10_GD\1DAE10E_01_deMouraCoutinho_Diogo\Applications\x64\Debug\Applications.exe
