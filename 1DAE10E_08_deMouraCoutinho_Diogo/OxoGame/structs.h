@@ -82,3 +82,36 @@ struct AngleSpeed
 };
 
 
+
+
+struct Player
+{
+	bool PlayerTurn{ false };
+	bool PlayerClicked{ false };
+	bool PlayerChoice{ false };
+	bool PlayerVictory{ false };
+};
+
+//
+//struct PlayerOne
+//{
+//	bool PlayerTurn{ false };
+//	bool PlayerClicked{ false };
+//	bool PlayerChoice{ false };
+//	bool PlayerVictory{ false };
+//};
+//
+//struct PlayerTwo
+//{
+//	bool PlayerTurn{ false };
+//	bool PlayerClicked{ false };
+//	bool PlayerChoice{ false };
+//	bool PlayerVictory{ false };
+//};
+struct Game
+{
+	bool HasX;
+	bool IsClicked;
+	bool IsGreen;
+	bool IsVictory;
+};

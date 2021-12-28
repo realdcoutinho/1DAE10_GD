@@ -2,11 +2,11 @@
 using namespace utils;
 #pragma region gameInformation
 // Set your name and group in the title here
-std::string g_WindowTitle{ "Project name - Name, firstname - 1DAExx" };
+std::string g_WindowTitle{ "ShuffleCards - deMouraCoutinho, Diogo - 1DAE10" };
 
 // Change the window dimensions here
-float g_WindowWidth{ 500 };
-float g_WindowHeight{ 300 };
+float g_WindowWidth{ 1000 };
+float g_WindowHeight{ 600 };
 #pragma endregion gameInformation
 
 
@@ -16,12 +16,21 @@ float g_WindowHeight{ 300 };
 //const variables
 const int g_Rows	{ 4 };
 const int g_Columns	{ 13 };
-const int g_DeckSize{ g_Rows * g_Columns };
+const int g_NrCards{ g_Rows * g_Columns };
+
 
 //Arrays
-Texture g_CardDeck[g_DeckSize]{};
+Texture g_Cards[g_NrCards]{};
+Texture temporaryLocation[g_NrCards]{};
 // Declare your own functions here
+void CreateTextures();
+void DeleteTextures();
+void Shuffle(int nrOfShuffles);
+void DrawTextures();
 
+
+
+int GetLinearIndex(int rowIndex, int columnIndex, int nrOfColumns);
 #pragma endregion ownDeclarations
 
 #pragma region gameFunctions											

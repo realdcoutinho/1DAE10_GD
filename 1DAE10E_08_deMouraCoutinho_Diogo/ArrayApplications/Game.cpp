@@ -196,7 +196,7 @@ void ToggleCell(Point2f MousePoint)
 			int index{ GetIndex(row, column, g_CellColumns) };
 			Rectf gridCell{ g_GridBottomLeft.x + (g_GridCellLenght * column),
 							g_GridBottomLeft.y + (g_GridCellLenght * row), g_GridCellLenght, g_GridCellLenght };
-			if (IsPointInRectangle(gridCell, g_MousePosToggle))
+			if (IsPointInRectangle(gridCell, MousePoint))
 			{
 				g_CellsArray[index] = !g_CellsArray[index];
 				return;

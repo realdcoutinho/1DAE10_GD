@@ -20,15 +20,18 @@ float g_KnightPositionHorizontal{};
 float g_KnightPositionVertical{ 0.0f };
 float g_KnightSpeed{15.0f};
 
-//float g_TiboPositionHorizontal{};
-//float g_TiboPositionVertical{};
-//float g_TiboSpeed{ 15.0f };
+bool g_IsLeftPressed{ false };
+bool g_IsRightPressed{ true };
+float g_TiboPositionHorizontal{};
+float g_TiboPositionVertical{};
+float g_TiboSpeed{ 15.0f };
 
 struct Sprite
 {
 	Texture texture;
 	int frames;
 	int cols;
+	int rows;
 	float frameTime;
 	int currentFrame;
 	float accumaltedTime;
@@ -36,15 +39,16 @@ struct Sprite
 
 
 Sprite g_KnightSprite{};
-//Sprite g_TiboSprite{};
+Sprite g_TiboSprite{};
 // Declare your own functions here
 void InitKnight();
 void UpdateKnight(float elapseSec);
 void DrawKnight();
 
-//void InitTibo();
-//void UpdateTibo(float elapseSec);
-//void DrawTibo();
+
+void InitTibo();
+void UpdateTibo(float elapseSec);
+void DrawTibo();
 
 
 #pragma endregion ownDeclarations
