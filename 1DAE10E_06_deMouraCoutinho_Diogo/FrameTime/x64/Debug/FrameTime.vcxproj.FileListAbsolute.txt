@@ -1,1 +1,2 @@
 C:\Users\diogo\Documents\DAE- 1st Semester\_Programming 01\Labs\Labs week 6\1DAE10_06_deMouraCoutinho_Diogo\FrameTime\x64\Debug\FrameTime.exe
+C:\Users\diogo\Documents\GitHub\1DAE10_GD\1DAE10E_06_deMouraCoutinho_Diogo\FrameTime\x64\Debug\FrameTime.exe

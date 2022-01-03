@@ -143,12 +143,6 @@ void DrawKnight()
 {
 	//Part of texture that corresponds with the curretn frame number
 	Rectf srcRect{};
-	if (g_IsLeftPressed) {
-
-	}
-	if (g_IsRightPressed) {
-
-	}
 
 	srcRect.width = (g_KnightSprite.texture.width / g_KnightSprite.cols);
 	srcRect.height = g_KnightSprite.texture.height;
