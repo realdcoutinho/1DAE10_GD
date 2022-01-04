@@ -31,6 +31,11 @@ void DrawColumnChart();
 #pragma region gameFunctions	
 
 void Start();
+void Draw();
+void Update(float elapsedSec);
+void End();
+
+/////////////////////////////////////////
 void DrawHouse();
 void DrawFlag();
 void DrawChekerPattern();
@@ -38,12 +43,8 @@ void DrawColorBand();
 void DrawPentagram();
 void DrawColumnChart();
 
-/////////////////////////////////////////
 
 
-void Draw();
-void Update(float elapsedSec);
-void End();
 #pragma endregion gameFunctions
 
 #pragma region inputHandling											

@@ -1,1 +1,2 @@
 C:\Users\diogo\Documents\DAE- 1st Semester\_Programming 01\Labs\Labs week 2\1DAE10E_02_deMouraCoutinho_Diogo\StaticDrawing\x64\Debug\StaticDrawing.exe
+C:\Users\diogo\Documents\GitHub\1DAE10_GD\1DAE10E_02_deMouraCoutinho_Diogo\StaticDrawing\x64\Debug\StaticDrawing.exe
