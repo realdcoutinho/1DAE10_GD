@@ -15,16 +15,22 @@ float g_WindowHeight{ 500 };
 // Declare your own global variables here
 int g_NrFrames = { 0 };
 
-float g_oneUnit_Width = g_WindowWidth / 20;
-float g_oneUnit_Height = g_WindowHeight / 10;
+float g_borderWidth = 50;
+float g_borderHeight = 50;
 
-float g_yellow_Growing = { 0 };
-float g_red_Growing = { 0 };
+float g_barLenght = g_WindowWidth - g_borderWidth * 2;
+float g_barHeight = 50;
 
-float g_borderWidth = { g_oneUnit_Width * 18};
+float g_redLenght = { 0 };
+float g_yellowLenght = { 0 };
 
+Color4f g_white{ 1, 1, 1, 1 };
+Color4f g_red{ 1, 0, 0, 1 };
+Color4f g_yellow{ 1, 1, 0, 1 };
 // Declare your own functions here
-
+void DrawYellow();
+void DrawRed();
+void GetLenght();
 #pragma endregion ownDeclarations
 
 #pragma region gameFunctions											
