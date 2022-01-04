@@ -10,48 +10,15 @@ void Start()
 
 void Draw()
 {
-	ClearBackground();
+	ClearBackground(0, 0, 0);
 
 	// Put your own draw statements here
-	
-	SetColor(1, 1, 1, 1);
-	//horizontal line going up
-	DrawLine(0, float(int(g_NrFrames) % int(g_WindowHeight)), g_WindowWidth, float(int(g_NrFrames) % int(g_WindowHeight))); // the values go from 0 to 500
-	//horizantal line going down
-	DrawLine(0, g_WindowHeight - float(int(g_NrFrames) % int(g_WindowHeight)), g_WindowWidth, g_WindowHeight - float(int(g_NrFrames) % int(g_WindowHeight))); // vales from 500 to 0
-
-	//vertical line going right
-	DrawLine(float(int(g_NrFrames) % int(g_WindowWidth)), 0, float(int(g_NrFrames) % int(g_WindowWidth)), g_WindowHeight);// the values go from 0 to 500
-	//vertical line going back
-	DrawLine(g_WindowWidth - float(int(g_NrFrames) % int(g_WindowWidth)), 0, g_WindowWidth - float(int(g_NrFrames) % int(g_WindowWidth)), g_WindowHeight);
-	
-
-	SetColor(1, 1, 0, 0.7f);
-	DrawLine(g_WindowWidth - float(int(g_NrFrames) % int(g_WindowWidth)), 0, 0, float(int(g_NrFrames) % int(g_WindowHeight)), 3); // left line of the square
-	DrawLine(0, float(int(g_NrFrames) % int(g_WindowHeight)), float(int(g_NrFrames) % int(g_WindowWidth)), g_WindowHeight, 3); // upward line of the square
-	DrawLine(float(int(g_NrFrames) % int(g_WindowWidth)), g_WindowHeight, g_WindowWidth, g_WindowHeight - float(int(g_NrFrames) % int(g_WindowHeight)), 3);
-	DrawLine(g_WindowWidth, g_WindowHeight - float(int(g_NrFrames) % int(g_WindowHeight)), g_WindowWidth - float(int(g_NrFrames) % int(g_WindowWidth)), 0, 3);
-	
-
+	DrawLines();
 }
 
 void Update(float elapsedSec)
 {
-
 	g_NrFrames++;
-
-	// process input, do physics 
-
-	// e.g. Check keyboard state
-	//const Uint8 *pStates = SDL_GetKeyboardState( nullptr );
-	//if ( pStates[SDL_SCANCODE_RIGHT] )
-	//{
-	//	std::cout << "Right arrow key is down\n";
-	//}
-	//if ( pStates[SDL_SCANCODE_LEFT] && pStates[SDL_SCANCODE_UP])
-	//{
-	//	std::cout << "Left and up arrow keys are down\n";
-	//}
 }
 
 void End()
@@ -118,5 +85,39 @@ void OnMouseUpEvent(const SDL_MouseButtonEvent& e)
 
 #pragma region ownDefinitions
 // Define your own functions here
+void DrawLines()
+{
+	float heightUp{ float((g_NrFrames % g_WindowHeightInt)) };
+	Point2f leftUP{ 0.0f, heightUp };
+	Point2f rightUp{ g_WindowWidth,  heightUp };
 
+	float heightDown{ g_WindowHeight - float((g_NrFrames % g_WindowHeightInt)) };
+	Point2f leftDown{ 0.0f, heightDown };
+	Point2f rightDown{ g_WindowWidth, heightDown };
+
+	SetColor(1, 1, 1, 1);
+	//horizontal line going up
+	DrawLine(leftUP, rightUp);
+	//horizantal line going down
+	DrawLine(leftDown, rightDown);
+
+	float widthRight{ float(int(g_NrFrames) % int(g_WindowWidth)) };
+	Point2f upRight{ widthRight, g_WindowHeight };
+	Point2f downRight{ widthRight, 0.0f };
+
+	float widthLeft{ g_WindowWidth - float(int(g_NrFrames) % int(g_WindowWidth)) };
+	Point2f upLeft{ widthLeft, g_WindowHeight };
+	Point2f downLeft{ widthLeft, 0.0f };
+
+	//vertical line going right
+	DrawLine(upRight, downRight);// the values go from 0 to 500
+	//vertical line going back
+	DrawLine(downLeft, upLeft);
+
+	SetColor(1, 1, 0, 0.7f);
+	DrawLine(leftUP, downLeft, 3); // left line of the square
+	DrawLine(leftUP, upRight, 3); // upward line of the square
+	DrawLine(upRight, rightDown, 3);
+	DrawLine(rightDown, downLeft, 3);
+}
 #pragma endregion ownDefinitions

@@ -14,11 +14,16 @@ float g_WindowHeight{ 500 };
 #pragma region ownDeclarations
 // Declare your own global variables here
 
+
+
+
 float g_oneUnit = 5;
-float g_NrFrames = { 0 };
-float g_maxFrames = 500;
+int g_NrFrames = { 0 };
+
+int g_WindowWidthInt{ int(g_WindowWidth) };
+int g_WindowHeightInt{ int(g_WindowHeight) };
+
 //Line One Horizontal
-float g_HorOneY = 0;
 
 //Line Two Horizontal Going dowm
 float g_HorTwoY = g_WindowHeight;
@@ -29,7 +34,7 @@ float g_lineOneX = 0;
 float g_lineOne1Y = 0;
 
 // Declare your own functions here
-
+void DrawLines();
 #pragma endregion ownDeclarations
 
 #pragma region gameFunctions											
