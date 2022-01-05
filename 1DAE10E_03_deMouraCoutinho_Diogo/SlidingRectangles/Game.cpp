@@ -11,51 +11,12 @@ void Start()
 void Draw()
 {
 	ClearBackground();
-
-	float widthRight = float(int(g_NrFrames) % int(g_WindowWidth - sideSize)); // delete the inner sideSize of the range so that the new sqaure reapears when hiden behind the window
-	float widthLeft = g_WindowWidth - float(int(g_NrFrames) % int(g_WindowWidth - sideSize)) - sideSize; // delete the inner sideSize of the range so that the new sqaure reapears when hiden behind the window
-
-
-	float heightUp = float(int(g_NrFrames) % int(g_WindowHeight - sideSize)); // delete the inner sideSize of the range so that the new sqaure reapears when hiden behind the window
-	float heightDown = g_WindowHeight - float(int(g_NrFrames) % int(g_WindowHeight - sideSize)) - sideSize; // delete the inner sideSize of the range so that the new sqaure reapears when hiden behind the window
-
-	SetColor(0, 0, 0); //black
-	DrawRect(widthRight, heightUp, sideSize, sideSize, 3); // rect left to right, down upwards
-	DrawRect(widthRight, heightDown, sideSize, sideSize, 3); // rect left to right, up downwards
-	DrawRect(widthLeft, heightUp, sideSize, sideSize, 3); // rect right to left, down upwards
-	DrawRect(widthLeft, heightDown, sideSize, sideSize, 3); //rect right to left, up downwards
-
-	SetColor(1, 0, 0, 0.5f); //red
-	FillRect(widthRight, heightUp, sideSize, sideSize); // rect left to right, down upwards
-
-	SetColor(0, 1, 0, 0.5f); // green
-	FillRect(widthRight, heightDown, sideSize, sideSize); // rect left to right, up downwards
-	
-	SetColor(0, 0, 1, 0.5f); // blue
-	FillRect(widthLeft, heightDown, sideSize, sideSize); //rect right to left, up downwards
-
-	SetColor(1, 1, 0, 0.5f); // yellow
-	FillRect(widthLeft, heightUp, sideSize, sideSize); // rect right to left, down upwards
-	// Put your own draw statements here
-
+	DrawSquares();
 }
 
 void Update(float elapsedSec)
 {
 	g_NrFrames++;
-
-	// process input, do physics 
-
-	// e.g. Check keyboard state
-	//const Uint8 *pStates = SDL_GetKeyboardState( nullptr );
-	//if ( pStates[SDL_SCANCODE_RIGHT] )
-	//{
-	//	std::cout << "Right arrow key is down\n";
-	//}
-	//if ( pStates[SDL_SCANCODE_LEFT] && pStates[SDL_SCANCODE_UP])
-	//{
-	//	std::cout << "Left and up arrow keys are down\n";
-	//}
 }
 
 void End()
@@ -122,5 +83,57 @@ void OnMouseUpEvent(const SDL_MouseButtonEvent& e)
 
 #pragma region ownDefinitions
 // Define your own functions here
+void DrawSquares()
+{
+	float heightUp{ float((g_NrFrames % (g_WindowHeightInt - g_SideLenghtInt))) }; // delete the inner sideSize of the range so that the new sqaure reapears when hiden behind the window
+	float heightDown{ g_WindowHeight - float((g_NrFrames % (g_WindowHeightInt - g_SideLenghtInt))) - g_SideLenght }; // delete the inner sideSize of the range so that the new sqaure reapears when hiden behind the window
 
+	float widthRight{ float((g_NrFrames % (g_WindowHeightInt - g_SideLenghtInt))) };// delete the inner sideSize of the range so that the new sqaure reapears when hiden behind the window
+	float widthLeft{ g_WindowHeight - float((g_NrFrames % (g_WindowHeightInt - g_SideLenghtInt))) - g_SideLenght }; // delete the inner sideSize of the range so that the new sqaure reapears when hiden behind the window
+
+	Point2f redBL{ widthRight , heightUp};
+	Point2f greenBL{ widthRight  ,  heightDown  };
+	Point2f yellowBL{ widthLeft   , heightUp};
+	Point2f blueBL{ widthLeft   , heightDown  };
+
+	SetColor(g_Black); //black
+	DrawRect(redBL, g_SideLenght, g_SideLenght, 3); // rect left to right, down upwards
+	DrawRect(greenBL, g_SideLenght, g_SideLenght, 3); // rect left to right, up downwards
+	DrawRect(yellowBL, g_SideLenght, g_SideLenght, 3); // rect right to left, down upwards
+	DrawRect(blueBL, g_SideLenght, g_SideLenght, 3); //rect right to left, up downwards
+
+	SetColor(g_Red); 
+	FillRect(redBL, g_SideLenght, g_SideLenght); // rect left to right, down upwards
+	SetColor(g_Green); 
+	FillRect(greenBL, g_SideLenght, g_SideLenght); // rect left to right, up downwards
+	SetColor(g_Blue); 
+	FillRect(yellowBL, g_SideLenght, g_SideLenght); //rect right to left, up downwards
+	SetColor(g_Yellow);
+	FillRect(blueBL, g_SideLenght, g_SideLenght); // rect right to left, down upwards
+
+	//////float widthRight = float(int(g_NrFrames) % int(g_WindowWidth - sideSize)); // delete the inner sideSize of the range so that the new sqaure reapears when hiden behind the window
+	//////float widthLeft = g_WindowWidth - float(int(g_NrFrames) % int(g_WindowWidth - sideSize)) - sideSize; // delete the inner sideSize of the range so that the new sqaure reapears when hiden behind the window
+
+	//////float heightUp = float(int(g_NrFrames) % int(g_WindowHeight - sideSize)); // delete the inner sideSize of the range so that the new sqaure reapears when hiden behind the window
+	//////float heightDown = g_WindowHeight - float(int(g_NrFrames) % int(g_WindowHeight - sideSize)) - sideSize; // delete the inner sideSize of the range so that the new sqaure reapears when hiden behind the window
+
+	//////SetColor(0, 0, 0); //black
+	//////DrawRect(widthRight, heightUp, sideSize, sideSize, 3); // rect left to right, down upwards
+	//////DrawRect(widthRight, heightDown, sideSize, sideSize, 3); // rect left to right, up downwards
+	//////DrawRect(widthLeft, heightUp, sideSize, sideSize, 3); // rect right to left, down upwards
+	//////DrawRect(widthLeft, heightDown, sideSize, sideSize, 3); //rect right to left, up downwards
+
+	//////SetColor(1, 0, 0, 0.5f); //red
+	//////FillRect(widthRight, heightUp, sideSize, sideSize); // rect left to right, down upwards
+
+	//////SetColor(0, 1, 0, 0.5f); // green
+	//////FillRect(widthRight, heightDown, sideSize, sideSize); // rect left to right, up downwards
+
+	//////SetColor(0, 0, 1, 0.5f); // blue
+	//////FillRect(widthLeft, heightDown, sideSize, sideSize); //rect right to left, up downwards
+
+	//////SetColor(1, 1, 0, 0.5f); // yellow
+	//////FillRect(widthLeft, heightUp, sideSize, sideSize); // rect right to left, down upwards
+	//////// Put your own draw statements here
+}
 #pragma endregion ownDefinitions

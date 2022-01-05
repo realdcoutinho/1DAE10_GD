@@ -13,10 +13,24 @@ float g_WindowHeight{ 500 };
 
 #pragma region ownDeclarations
 // Declare your own global variables here
-float sideSize{ 100 };
-float g_NrFrames{};
-// Declare your own functions here
+float g_SideLenght{ 100 };
+int g_SideLenghtInt{ int(g_SideLenght) };
+int g_NrFrames{};
+int g_WindowWidthInt{ int(g_WindowWidth) };
+int g_WindowHeightInt{ int(g_WindowHeight) };
 
+Color4f g_Black{ 0, 0, 0, 1 };
+Color4f g_Red{ 1, 0, 0, 0.5f };
+Color4f g_Green{ 0, 1, 0, 0.5f };
+Color4f g_Blue{ 0, 0, 1, 0.5f };
+Color4f g_Yellow{ 1, 1, 0, 0.5f };
+
+////float sideSize{ 100 };
+////float g_NrFrames{};
+
+
+// Declare your own functions here
+void DrawSquares();
 #pragma endregion ownDeclarations
 
 #pragma region gameFunctions											
