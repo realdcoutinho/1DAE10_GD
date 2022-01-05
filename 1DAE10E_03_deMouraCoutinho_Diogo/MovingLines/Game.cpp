@@ -101,11 +101,11 @@ void DrawLines()
 	//horizantal line going down
 	DrawLine(leftDown, rightDown);
 
-	float widthRight{ float(int(g_NrFrames) % int(g_WindowWidth)) };
+	float widthRight{ float(g_NrFrames % g_WindowHeightInt) };
 	Point2f upRight{ widthRight, g_WindowHeight };
 	Point2f downRight{ widthRight, 0.0f };
 
-	float widthLeft{ g_WindowWidth - float(int(g_NrFrames) % int(g_WindowWidth)) };
+	float widthLeft{ g_WindowWidth - float(g_NrFrames % g_WindowHeightInt) };
 	Point2f upLeft{ widthLeft, g_WindowHeight };
 	Point2f downLeft{ widthLeft, 0.0f };
 
