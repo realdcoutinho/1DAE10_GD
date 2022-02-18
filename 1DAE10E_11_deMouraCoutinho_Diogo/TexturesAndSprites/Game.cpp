@@ -8,7 +8,7 @@
 void Start()
 {
 	// initialize game resources here
-	InitialiseSprites(g_pSpritesKnights, g_AmountOfKnights, g_FilePathKnight, 8, 1, 8, g_speedKnight, 3, g_isScalable);
+	InitialiseSprites(g_pSpritesKnights, g_AmountOfKnights, g_FilePathKnight, 8, 1, 8, g_speedKnight, 7, g_isScalable);
 	InitialiseSprites(g_pSpritesTibos, g_AmountOfTibos, g_FilePathTibo, 5, 5, 25, g_speedTibo, 1, g_notScalabe);
 	InitialiseSprites(g_pSpritesDAE, g_AmountOfDAE, g_FilePathDAE, 1, 1, 1, g_speedDAE, 2, g_notScalabe);
 	InitialiseSpritesText(g_pSpritesHello, g_AmountOfHello, g_FilePathHello, g_Hello, g_textSize, g_Red);
