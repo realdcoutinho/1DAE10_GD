@@ -16,7 +16,6 @@ private:
 	std::string m_Text{};
 	int m_TextSize{};
 
-
 	
 public:
 	Sprite(const std::string& filename, int nrCols, int nrRows, int nrOfFrames, float frameSec, float scale);
